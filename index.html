@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif !important;
+        }
+        .content-info{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem .2rem;
+            z-index: 3;
+        }
+
+        /* div>div{
+            display: flex;
+        } */
+
+        div>div>svg{
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        input[type="radio"]{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        input[type="radio"]:checked{
+            background-color: #b20808;
+
+        }
+
+        div > label > input[type="radio"] + div{ 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #000;
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+        }
+
+        label > input[type="radio"]{
+            display: none;
+        }
+
+        /* cambiar background of label when state is checked radio */
+        label > input[type="radio"]:checked + div{
+            background-color: #000;
+            & > span{
+                background-color: #fff;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+            }
+        }
+
+        .item-price{
+            cursor: pointer;
+        }
+
+        .triangle-bottom{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 0px;
+            & > div{
+                transform: rotate(225deg) translate(-50%);
+                border-bottom-right-radius: 30%;
+                width: 0.75rem;
+                height: 0.75rem;
+                background: linear-gradient(135deg, #f97316 0%, #f97316 50%, transparent 50%, transparent 100%);
+            }
+        }
+
+        .item_cart.active {
+            border: 4px solid #f97316;
+            & .triangle-bottom{
+                display: flex
+            }
+        }
+
+        .triangle-bottom{
+            display: none;
+        }
+        @media (max-width: 640px){
+            .bg-car{
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+            .condition-direction-flex{
+                flex-direction: column;
+            }
+            .flex-wrap-mobile{
+                flex-wrap: wrap;
+            }
+            .button-next{
+                width: 100%;
+            }
+        }
+
+
+        @media (min-width: 1024px){
+            .bg-car{
+                border-top-right-radius: 0px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+            .condition-direction-flex{
+                flex-direction: row;
+            }
+            .button-next{
+                width: 200px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <main class="w-3/4 m-auto">
+        <div class="mt-3 flex flex-row gap-2 w-[95%] m-auto h-24 items-center">
+            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+                Sedan
+            </div>
+            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+                Corolla
+            </div>
+            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+                CXR-X
+            </div>
+            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+                Sedan
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 m-auto">
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
+                <article 
+                    class="flex flex-col justify-between gap-4 bg-center px-3 py-1 relative overflow-hidden rounded-xl" 
+                    style="background-image: url(./assets/background-car.webp); background-size: cover;"
+                >
+                    <div class="content-info">
+                        <header>
+                            <h3 class="text-white"><strong>Compact (Nissan Versa)</strong></h3>
+                            <p class="text-gray-500 leading-3 mb-6"><small>o similar | Sedán</small></p>
+                            <div class="mt-3 flex flex-row gap-2">
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 bg-gray-600 text-white text-xs rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4
+                                </div>
+                            </div>
+                        </header>
+                        <main>
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer>
+                            <p class="text-white flex flex-row gap-2">
+                                <span class="text-green-500">
+                                    <svg class="w-[16px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                </span>
+                                <small>Millas limitadas</small>
+                            </p>
+                            <p class="text-gray-500"><strong class="text-white"><small>$</small> <span class="text-3xl">932</span>.69/día</strong> <small>$ 3,730.91 total</small></p>
+                            
+                        </footer>
+                    </div>
+                </article>
+                <div class="triangle-bottom">
+                    <div></div>
+                </div>
+            </div>
+            <!-- section full -->
+            <section id="show-content" class="lg:col-span-3 md:col-span-2 hover:border-4 border-4 border-white p-4 py-12 bg-[#ebebf0]">
+                <div class="grid lg:grid-cols-2 md:grid-cols-1 w-[95%] bg-white m-auto rounded-2xl shadow-lg shadow-gray-500/40">
+                    <div class="flex flex-col bg-car" style="background-image: url(./assets/background-car.webp);background-size: cover;">
+                        <header class="p-3 relative">
+                            <h2 class="text-white text-2xl"><strong>Compact (Nissan Versa)</strong></h2>
+                            <p class="text-gray-500 mb-6 text-xl"><small>o similar | Sedán</small></p>
+                            <a class="absolute text-white top-2 right-4 text-2xl cursor-pointer" onclick="closed()">X</a>
+                        </header>
+                        <main class="flex justify-center">
+                            <img class="car" src="./assets/nissan-versa-4d-grey-2023.png" alt="">
+                        </main>
+                        <footer class="mb-5 flex justify-center items-center">
+                            <div class="mt-3 flex flex-row gap-2 flex-wrap justify-center">
+                                <div class="flex py-1 px-2 text-white text-md items-center rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                    5 Pasajeros
+                                </div>
+                                <div class="flex py-1 px-2 text-white text-md items-center rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.29 15.88l-.9-2.38H9.17l-.89 2.37a.968.968 0 11-1.81-.69l4.25-10.81c.22-.53.72-.87 1.28-.87s1.06.34 1.27.87l4.25 10.81a.968.968 0 01-.9 1.32c-.4 0-.76-.25-.91-.62z"></path></svg>
+                                    Automático
+                                </div>
+                                <div class="flex py-1 px-2 text-white text-md items-center rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 17"><path d="M9.281 3.833l2.553 2.553v1.447H5.167v-4H9.28zM5.167 10.5v-.667h2v.667h-2zm0-8c-.737 0-1.333.597-1.333 1.333v9.334c0 .736.596 1.333 1.333 1.333h4.667a3.333 3.333 0 013.333-3.333V6.386c0-.354-.14-.693-.39-.943L10.223 2.89c-.25-.25-.59-.391-.943-.391H5.167z"></path></svg>
+                                    4 Puertas
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                    <div class="md:grid md:grid-cols-3 lg:flex lg:flex-col lg:justify-between p-8">
+                        <div class="col-span-2">
+                            <h3 class="mb-8">Opciones de pago</h3>
+                            <section>
+                                <div class="item-price flex gap-2 border-[2px] py-2 items-center pl-2 rounded-t-lg tab1 border-b-0" onclick="activateTabs('tab1')">
+                                    <div class="">
+                                        <label for="price-tab1">
+                                            <input type="radio" name="item_price" id="price-tab1">
+                                            <div>
+                                                <span></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="flex flex-col flex-1 flex-wrap">
+                                        <h3 class="text-lg font-bold">Mejor precio</h3>
+                                        <small class="text-gray-500">Paga ahora, cancela y reprograma por una tarifa</small>
+                                    </div>
+                                    <div class="flex flex-end items-center gap-2">
+                                        <p>
+                                            Incluido
+                                        </p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M7.333 7.333h1.333v4H7.333v-4zm0-2.666h1.333V6H7.333V4.667zm.66-3.334A6.663 6.663 0 001.333 8c0 3.68 2.98 6.667 6.66 6.667A6.67 6.67 0 0014.666 8a6.67 6.67 0 00-6.673-6.667zm.007 12A5.332 5.332 0 012.666 8 5.332 5.332 0 018 2.667 5.332 5.332 0 0113.333 8 5.332 5.332 0 018 13.333z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="item-price flex gap-2 border-[2px] py-2 items-center pl-2 rounded-b-lg tab2 border-t-0 flex-wrap-mobile" onclick="activateTabs('tab2')">
+                                    <div>
+                                        <label for="price-tab2">
+                                            <input type="radio" name="item_price" id="price-tab2">
+                                            <div>
+                                                <span></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="flex flex-col flex-1">
+                                        <h3 class="text-lg font-bold">Manténgase flexible</h3>
+                                        <small class="text-gray-500">Pague al recoger, cancelación y cambio de reserva gratuitos en cualquier momento</small>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="bg-orange-500 px-2 py-[2px] rounded-full">
+                                            <small class="text-white">Popular</small>
+                                        </div>
+                                        <p>
+                                            + $129.83 <small>/ día</small>
+                                        </p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M7.333 7.333h1.333v4H7.333v-4zm0-2.666h1.333V6H7.333V4.667zm.66-3.334A6.663 6.663 0 001.333 8c0 3.68 2.98 6.667 6.66 6.667A6.67 6.67 0 0014.666 8a6.67 6.67 0 00-6.673-6.667zm.007 12A5.332 5.332 0 012.666 8 5.332 5.332 0 018 2.667 5.332 5.332 0 0113.333 8 5.332 5.332 0 018 13.333z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-span-1 flex md:justify-center lg:w-full">
+                            <div class="flex condition-direction-flex lg:justify-between items-center gap-2 p-3  w-full ">
+                                
+                                <div class="flex flex-col">
+                                    <h3>Total</h3>
+                                    <h3 class="text-2xl font-bold">$ 2,219.05/día <span class="text-sm text-gray-500">$ 8,876.04</span></h3>
+                                    <a href="#" class="font-bold hover:underline text-sm">
+                                        Detalle de los precios
+                                    </a>
+                                </div>
+                                <div class="w-full flex justify-end">
+                                    <a href="/checkout.html" class="button-next btn bg-orange-500 p-3 text-center rounded-lg text-white   mt-3">Siguiente</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- end section full -->
+            
+        </div>
+    </main>
+    <script>
+        function activateTabs(nameClass){
+            const tabs = document.querySelectorAll('.item-price');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-black');
+                tab.classList.add('border');
+                tab.classList.remove('!border-[1px]');
+            });
+
+            const tab = document.querySelector(`.${nameClass}`);
+            tab.classList.add('border-black');
+            tab.classList.add('!border-[1px]');
+            document.querySelector(`#price-${nameClass}`).checked = true;
+            
+        }
+        
+        const items = document.querySelectorAll('.item_cart')
+        items.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                let clone = document.querySelector('#show-content')
+                                        .classList
+                                        .remove('hidden')
+                clone = document.querySelector('#show-content')
+                                        .cloneNode(true)
+
+                const width = window.screen.width;
+                if(width >= 1024){
+                    document.querySelector('#show-content').remove();
+                    const positionAfterForWidth = index % 3;
+                    if(positionAfterForWidth === 0){
+                        items[index + 2].after(clone);
+                    }else if(positionAfterForWidth === 1){
+                        items[index + 1].after(clone);
+                    }else if(positionAfterForWidth === 2){
+                        items[index].after(clone);
+                    }
+                }
+                if(width < 1024 && width >= 768){
+                    document.querySelector('#show-content').remove();
+                    const positionAfterForWidth = index % 2;
+                    console.log("🚀 ~ item.addEventListener ~ positionAfterForWidth:", positionAfterForWidth)
+                    if(positionAfterForWidth === 0){
+                        items[index + 1].after(clone);
+                    }else if(positionAfterForWidth === 1){
+                        items[index + 0].after(clone);
+                    }else if(positionAfterForWidth === 2){
+                        items[index].after(clone);
+                    }
+                }
+                if(width < 768){
+                    document.querySelector('#show-content').remove();
+                    // animation of height for show content
+                    items[index].after(clone);
+                }
+                
+                removeClassActive()
+                item.classList.add('active');
+            })
+                
+        });
+
+        function removeClassActive(){
+            const items = document.querySelectorAll('.item_cart')
+            items.forEach(item => {
+                item.classList.remove('active')
+            })
+        }
+
+        function closed(){
+            console.log('close')
+            document.querySelector('#show-content').classList.add('hidden');
+            removeClassActive()
+        }
+        
+        
+    </script>
+</body>
+</html>
