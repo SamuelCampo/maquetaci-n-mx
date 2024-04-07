@@ -130,7 +130,7 @@
     
 </head>
 <body>
-    <main class="w-3/4 m-auto">
+    <main class="lg:w-3/4 m-auto">
         <div class="mt-3 flex flex-row gap-2 w-[95%] m-auto h-24 items-center">
             <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
                 Sedan
@@ -406,7 +406,7 @@
                 </div>
             </div>
             <!-- section full -->
-            <section id="show-content" class="lg:col-span-3 md:col-span-2 hover:border-4 border-4 border-white p-4 py-12 bg-[#ebebf0]">
+            <section id="show-content" class="lg:col-span-3 md:col-span-2 hover:border-4 border-4 border-white lg:p-4 md:p-1 py-12 bg-[#ebebf0]">
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-[95%] bg-white m-auto rounded-2xl shadow-lg shadow-gray-500/40">
                     <div class="flex flex-col bg-car" style="background-image: url(./assets/background-car.webp);background-size: cover;">
                         <header class="p-3 relative">
@@ -492,7 +492,7 @@
                                 
                                 <div class="flex flex-col">
                                     <h3>Total</h3>
-                                    <h3 class="text-2xl font-bold">$ 2,219.05/día <span class="text-sm text-gray-500">$ 8,876.04</span></h3>
+                                    <h3 class="text-2xl font-bold">$ <span id="price">2,219.05</span>/día <span class="text-sm text-gray-500">$ <span id="price-total">8,876.04</span></span></h3>
                                     <a href="#" class="font-bold hover:underline text-sm">
                                         Detalle de los precios
                                     </a>
@@ -511,6 +511,8 @@
         </div>
     </main>
     <script>
+        const items = document.querySelectorAll('.item_cart')
+        const valueMin = '2,219.05';
         function activateTabs(nameClass){
             const tabs = document.querySelectorAll('.item-price');
             tabs.forEach(tab => {
@@ -519,6 +521,14 @@
                 tab.classList.remove('!border-[1px]');
             });
 
+            if('tab2' === nameClass){
+                document.querySelector('#price-total').textContent = '9,005.87';
+                document.querySelector('#price').textContent = '2,348.88';
+            }else{
+                document.querySelector('#price-total').textContent = '8,876.04';
+                document.querySelector('#price').textContent = '2,219.05';
+            }
+
             const tab = document.querySelector(`.${nameClass}`);
             tab.classList.add('border-black');
             tab.classList.add('!border-[1px]');
@@ -526,7 +536,8 @@
             
         }
         
-        const items = document.querySelectorAll('.item_cart')
+        
+
         items.forEach((item, index) => {
             item.addEventListener('click', (e) => {
                 let clone = document.querySelector('#show-content')

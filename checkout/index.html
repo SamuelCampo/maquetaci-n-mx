@@ -110,13 +110,31 @@
         input{
             outline: none;
         }
+
+        @media (max-width: 768px){
+            .layout-design{
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        }
+
+
     </style>
     
 </head>
 <body>
-    <main class="w-3/4 m-auto py-8">
-        <div class="flex gap-24">
-            <section class="flex-1">
+    <main class="lg:w-3/4 m-auto py-8 p-2">
+        <header class="flex justify-between layout-design">
+            <h1 class="text-3xl font-bold uppercase">¿Que complementos necesitas?</h1>
+            <div>
+                <h3 class="text-2xl">Total: $<span id="total">2,194.08</span></h3>
+                <small>Detalle de los precios</small>
+            </div>
+        </header>
+        <div class="flex gap-24 flex-wrap">
+            <section class="flex-1 sm:w-full">
                 <div class="flex items-center justify-between border border-black px-4 py-5 rounded-lg flex-wrap">
                     <div class="flex items-center gap-2">
                         <div class="w-[30px]" aria-hidden="true" >
@@ -155,7 +173,7 @@
                     </div>
                 </div>
             </section>
-            <aside class="max-w-[400px] bg-gray-200 p-4 rounded">
+            <aside class="md:w-full lg:max-w-[400px] bg-gray-200 p-4 rounded">
                 <p>Su resumen de reserva</p>
                 <ul>
                     <li class="flex gap-2 mb-2">
@@ -199,23 +217,29 @@
         const checked = document.getElementById('checked');
         const switchC = document.querySelector('.switch');
         const counter = document.querySelector('.counter');
+        let total = 2194.08
+        let additional = 249.64
 
         const changeStatus = () => {
             setTimeout(() => {
-            counter.classList.toggle('hidden');
-            switchC.classList.add('hidden');
+                counter.classList.toggle('hidden');
+                switchC.classList.add('hidden');
+                total = parseFloat(total) + additional;
+                document.getElementById('total').innerText = (total).toFixed(2);
             }, 250);
         }
-
-        console.log("🚀 ~ qty:", qty)
         const increment = () => {
             qty.value = parseInt(qty.value) + 1;
+            total = parseFloat(total) + additional;
+            document.getElementById('total').innerText = (total).toFixed(2);
             console.log("🚀 ~ increment ~ qty.value:", qty.value)
         }
         const decrement = () => {
+            total = parseFloat(total) - additional;
             if(qty.value == 1){
                 switchC.classList.remove('hidden');
                 counter.classList.toggle('hidden');
+                document.getElementById('total').innerText = total.toFixed(2);
                 setTimeout(() => {
                     
                     // move ::before
@@ -223,6 +247,7 @@
                 }, 50);
             }
             if(qty.value > 1){
+                document.getElementById('total').innerText = total.toFixed(2);
                 qty.value = parseInt(qty.value) - 1;
             }
         }
