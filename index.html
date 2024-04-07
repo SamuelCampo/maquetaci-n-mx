@@ -132,18 +132,18 @@
 <body>
     <main class="lg:w-3/4 m-auto">
         <div class="mt-3 flex flex-row gap-2 w-[95%] m-auto h-24 items-center">
-            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+            <button class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full" onclick="changeImage('bmw-1er-5d-schwarz-2020.png')">
                 Sedan
-            </div>
-            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+            </button>
+            <button class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full" onclick="changeImage('mini-cooper-cabrio-2d-weiss-offen-2018.png')">
                 Corolla
-            </div>
-            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+            </button>
+            <button class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full" onclick="changeImage('nissan-versa-4d-grey-2023.png')">
                 CXR-X
-            </div>
-            <div class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full">
+            </button>
+            <button class="py-1 px-4 bg-gray-300 text-dark text-md rounded-full" onclick="changeImage('opel-corsa-5d-white-2021.png')">
                 Sedan
-            </div>
+            </button>
         </div>
         <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 m-auto">
             <div class="p-2 hover:border-4 border-4 border-white rounded-xl item_cart">
@@ -406,7 +406,7 @@
                 </div>
             </div>
             <!-- section full -->
-            <section id="show-content" class="lg:col-span-3 md:col-span-2 hover:border-4 border-4 border-white lg:p-4 md:p-1 py-12 bg-[#ebebf0]">
+            <section id="show-content" class="lg:col-span-3 md:col-span-2 hover:border-4 border-4 border-white lg:p-4 md:p-1 py-12 bg-[#ebebf0] hidden">
                 <div class="grid lg:grid-cols-2 md:grid-cols-1 w-[95%] bg-white m-auto rounded-2xl shadow-lg shadow-gray-500/40">
                     <div class="flex flex-col bg-car" style="background-image: url(./assets/background-car.webp);background-size: cover;">
                         <header class="p-3 relative">
@@ -536,6 +536,12 @@
             
         }
         
+        function changeImage(img){
+            const items = document.querySelectorAll('.car')
+            items.forEach(item => {
+                item.src =  `./assets/${img}`
+            })
+        }
         
 
         items.forEach((item, index) => {
