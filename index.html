@@ -566,6 +566,12 @@
 
         items.forEach((item, index) => {
             item.addEventListener('click', (e) => {
+                console.log("🚀 ~ item.addEventListener ~ e:", e)
+                if(item.classList.contains('active')){
+                    item.classList.remove('active')
+                    closed()
+                    return
+                }
                 let clone = document.querySelector('#show-content')
                                         .classList
                                         .remove('hidden')
